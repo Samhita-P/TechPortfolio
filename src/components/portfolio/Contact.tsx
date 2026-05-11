@@ -34,11 +34,11 @@ export function Contact() {
       await new Promise((r) => setTimeout(r, 1000));
 
       await emailjs.sendForm(
-        "service_r99fq56",
-        "template_kfsm39u",
-        form,
-        "9oBZONhPH0vVXWccr"
-      );
+  import.meta.env.VITE_EMAILJS_SERVICE_ID,
+  import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
+  form,
+  import.meta.env.VITE_EMAILJS_PUBLIC_KEY
+);
 
       setStatus(
         "Transmission successful. Uplink established ✓"
