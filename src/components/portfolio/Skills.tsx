@@ -5,16 +5,8 @@ const groups: { name: string; color: string; items: string[] }[] = [
   {
     name: "Languages",
     color: "primary",
-    items: [
-      "Python",
-      "Java",
-      "C",
-      "SQL",
-      "TypeScript",
-      "JavaScript",
-    ],
+    items: ["Python", "Java", "C", "SQL", "TypeScript", "JavaScript"],
   },
-
   {
     name: "Backend Engineering",
     color: "accent",
@@ -27,19 +19,11 @@ const groups: { name: string; color: string; items: string[] }[] = [
       "Microservices",
     ],
   },
-
   {
     name: "Frontend & Mobile",
     color: "primary",
-    items: [
-      "Flutter",
-      "Angular",
-      "HTML",
-      "CSS",
-      "Responsive UI",
-    ],
+    items: ["Flutter", "Angular", "HTML", "CSS", "Responsive UI"],
   },
-
   {
     name: "AI / ML Systems",
     color: "accent",
@@ -51,7 +35,6 @@ const groups: { name: string; color: string; items: string[] }[] = [
       "Computer Vision",
     ],
   },
-
   {
     name: "Testing & Automation",
     color: "primary",
@@ -68,17 +51,11 @@ const groups: { name: string; color: string; items: string[] }[] = [
       "API Testing",
     ],
   },
-
   {
     name: "Databases",
     color: "accent",
-    items: [
-      "PostgreSQL",
-      "MongoDB",
-      "Database Design",
-    ],
+    items: ["PostgreSQL", "MongoDB", "Database Design"],
   },
-
   {
     name: "Security & Authentication",
     color: "primary",
@@ -90,21 +67,11 @@ const groups: { name: string; color: string; items: string[] }[] = [
       "Role-Based Access",
     ],
   },
-
   {
     name: "DevOps & Tools",
     color: "accent",
-    items: [
-      "Docker",
-      "Jenkins",
-      "Git",
-      "GitHub",
-      "Postman",
-      "Figma",
-      "Maven",
-    ],
+    items: ["Docker", "Jenkins", "Git", "GitHub", "Postman", "Figma", "Maven"],
   },
-
   {
     name: "Engineering Practices",
     color: "primary",
@@ -121,10 +88,13 @@ const groups: { name: string; color: string; items: string[] }[] = [
 
 export function Skills() {
   return (
-    <section id="skills" className="relative py-32">
+    <section
+      id="skills"
+      className="relative py-16 sm:py-20 md:py-24 lg:py-32"
+    >
       <div className="absolute inset-0 grid-bg opacity-30" />
 
-      <div className="relative mx-auto max-w-6xl px-6">
+      <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <SectionHeader
           index="04"
           id="capabilities.map()"
@@ -132,19 +102,19 @@ export function Skills() {
           kicker="Tools, languages and systems orbiting the engineering core. Hover to inspect each cluster."
         />
 
-        {/* Galaxy Visual */}
-        <div className="relative mx-auto h-[420px] max-w-3xl mb-16 hidden md:block">
-          {/* Core */}
-          <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 size-28 rounded-full glass-strong flex items-center justify-center">
-            <span className="font-display text-sm tracking-[0.3em] text-gradient">
+        {/* ORBIT VISUAL */}
+        <div className="relative mx-auto mb-12 md:mb-16 hidden md:block w-full max-w-3xl h-[320px] lg:h-[420px]">
+          {/* CORE */}
+          <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 size-20 md:size-24 lg:size-28 rounded-full glass-strong flex items-center justify-center">
+            <span className="font-display text-xs md:text-sm tracking-[0.25em] text-gradient">
               CORE
             </span>
 
             <div className="absolute inset-0 rounded-full animate-pulse-ring" />
           </div>
 
-          {/* Orbit Rings */}
-          {[160, 220].map((r, ringIdx) => (
+          {/* ORBIT RINGS */}
+          {[120, 170].map((r, ringIdx) => (
             <div
               key={r}
               className="absolute inset-0 flex items-center justify-center pointer-events-none"
@@ -162,9 +132,9 @@ export function Skills() {
             </div>
           ))}
 
-          {/* Orbit Nodes */}
+          {/* ORBIT LABELS */}
           {groups.map((g, i) => {
-            const ring = i < 4 ? 160 : 220;
+            const ring = i < 4 ? 120 : 170;
             const items = i < 4 ? groups.slice(0, 4) : groups.slice(4);
             const idx = i < 4 ? i : i - 4;
             const total = items.length;
@@ -179,13 +149,13 @@ export function Skills() {
             return (
               <div
                 key={g.name}
-                className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 group"
+                className="absolute left-1/2 top-1/2 group"
                 style={{
                   transform: `translate(calc(-50% + ${x}px), calc(-50% + ${y}px))`,
                 }}
               >
                 <div
-                  className={`glass rounded-full px-3 py-1.5 font-mono text-[10px] tracking-wider ${
+                  className={`glass rounded-full px-2 md:px-3 py-1 font-mono text-[9px] md:text-[10px] tracking-wider whitespace-nowrap ${
                     g.color === "accent"
                       ? "text-accent border-accent/40"
                       : "text-primary"
@@ -199,8 +169,17 @@ export function Skills() {
           })}
         </div>
 
-        {/* Categorized Skill Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+        {/* MOBILE CORE */}
+        <div className="md:hidden mb-10 flex justify-center">
+          <div className="size-24 rounded-full glass-strong flex items-center justify-center">
+            <span className="font-display text-sm tracking-[0.25em] text-gradient">
+              CORE
+            </span>
+          </div>
+        </div>
+
+        {/* SKILLS GRID */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4 md:gap-5">
           {groups.map((g, i) => (
             <motion.div
               key={g.name}
@@ -208,25 +187,24 @@ export function Skills() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.05 }}
-              className="glass rounded-xl p-5 hover:border-primary/50 transition duration-300"
+              className="glass rounded-xl p-4 sm:p-5 hover:border-primary/50 transition duration-300"
             >
-              <div className="flex items-center gap-2 font-mono text-[10px] tracking-[0.3em] text-muted-foreground">
+              <div className="flex items-center gap-2 font-mono text-[9px] sm:text-[10px] tracking-[0.25em] text-muted-foreground">
                 <span
                   className={`size-1.5 rounded-full ${
-                    g.color === "accent"
-                      ? "bg-accent"
-                      : "bg-primary"
+                    g.color === "accent" ? "bg-accent" : "bg-primary"
                   }`}
                 />
-
-                {g.name.toUpperCase()}
+                <span className="break-words">
+                  {g.name.toUpperCase()}
+                </span>
               </div>
 
-              <div className="mt-3 flex flex-wrap gap-1.5">
+              <div className="mt-3 flex flex-wrap gap-2">
                 {g.items.map((s) => (
                   <span
                     key={s}
-                    className="px-2.5 py-1 rounded-md text-xs font-mono bg-foreground/5 border border-border text-foreground/85 hover:border-primary/60 hover:text-primary transition duration-300"
+                    className="px-2 py-1 rounded-md text-[10px] sm:text-xs font-mono bg-foreground/5 border border-border text-foreground/85 hover:border-primary/60 hover:text-primary transition duration-300 break-words"
                   >
                     {s}
                   </span>
