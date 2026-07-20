@@ -3,12 +3,36 @@ import { SectionHeader } from "./SectionHeader";
 
 const logs = [
   {
-    time: "2026.PRESENT",
+    time: "2026.JUL – PRESENT",
     org: "Mphasis",
-    role: "Software Development Engineer in Test (SDET) Intern",
-    location: "Bengaluru & Chennai, India",
+    role: "Associate Software Engineer",
+    location: "Chennai, India",
     description:
-      "Worked on enterprise-level Trade File Processing and Management System involving backend development, automation testing, API validation, and batch processing. Contributed to both development and quality assurance activities in Agile environments.",
+      "Transitioned into a full-time engineering role at Mphasis, ramping up on new projects and contributing to backend development and delivery within an enterprise Agile environment.",
+    notes: [
+      "Onboarding onto new project assignments as a full-time engineer.",
+      "Contributing to backend development and collaborative Agile delivery.",
+    ],
+    technologies: [
+      "Java",
+      "Spring Boot",
+      "PostgreSQL",
+      "Git",
+    ],
+    skillsGained: [
+      "Backend Development",
+      "Enterprise Application Development",
+      "Agile Methodology",
+    ],
+    color: "primary",
+  },
+  {
+    time: "2026.FEB – 2026.MAY",
+    org: "Mphasis",
+    role: "Trainee Associate Software Engineer",
+    location: "Chennai, India",
+    description:
+      "Worked on an enterprise-level Trade File Processing and Management System involving backend development, automation testing, API validation, and batch processing. Contributed to both development and quality assurance activities in Agile environments.",
     notes: [
       "Developed and tested RESTful APIs using Spring Boot and PostgreSQL.",
       "Implemented automation testing using Selenium WebDriver, TestNG, and Cucumber.",
@@ -50,9 +74,8 @@ const logs = [
       "Enterprise Application Development",
       "Agile Methodology",
     ],
-    color: "primary",
+    color: "accent",
   },
-
   {
     time: "2025.FEB – 2026.MAR",
     org: "Sisail Pvt Ltd",
@@ -94,16 +117,15 @@ const logs = [
       "Collaborative Software Development",
       "Enterprise Application Development",
     ],
-    color: "accent",
+    color: "primary",
   },
-
   {
     time: "2025.APR – 2025.JUN",
     org: "Bobler",
     role: "Software Engineer Intern",
     location: "Bengaluru, India",
     description:
-      "Worked on backend engineering and API integration for Bobler’s Gen Z-focused social audio platform. Contributed to scalable backend workflows, REST API integration, and SEO-focused digital content initiatives.",
+      "Worked on backend engineering and API integration for Bobler's Gen Z-focused social audio platform. Contributed to scalable backend workflows, REST API integration, and SEO-focused digital content initiatives.",
     notes: [
       "Engineered backend features using Python and Django, improving API efficiency and platform scalability.",
       "Integrated REST APIs to enhance functionality and improve communication between backend services.",
@@ -131,7 +153,7 @@ const logs = [
       "Agile Methodology",
       "Collaborative Software Development",
     ],
-    color: "primary",
+    color: "accent",
   },
 ];
 
@@ -142,7 +164,6 @@ export function Experience() {
       className="relative py-16 sm:py-20 md:py-24 lg:py-32"
     >
       <div className="absolute inset-0 grid-bg opacity-25" />
-
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <SectionHeader
           index="03"
@@ -150,24 +171,21 @@ export function Experience() {
           title="Activity log."
           kicker="A live tail of where the engineering happened — internships and hands-on production missions."
         />
-
         <div className="glass rounded-2xl p-4 sm:p-6 md:p-8 font-mono relative overflow-hidden">
           {/* TERMINAL HEADER */}
           <div className="flex flex-wrap items-center gap-2 mb-6">
             <span className="size-2 rounded-full bg-destructive/80 shrink-0" />
             <span className="size-2 rounded-full bg-yellow-400/70 shrink-0" />
             <span className="size-2 rounded-full bg-primary shrink-0" />
-
             <span className="ml-0 sm:ml-3 text-[9px] sm:text-[11px] tracking-[0.15em] sm:tracking-[0.3em] text-muted-foreground break-all">
               samhita@cortex:~/journal $ tail -f
             </span>
           </div>
-
           {/* TIMELINE */}
           <ol className="relative pl-4 sm:pl-6 border-l border-primary/30 space-y-10 sm:space-y-12">
             {logs.map((l, i) => (
               <motion.li
-                key={l.org}
+                key={`${l.org}-${l.time}`}
                 initial={{ opacity: 0, x: -10 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
@@ -179,58 +197,42 @@ export function Experience() {
                     l.color === "accent"
                       ? "bg-accent"
                       : "bg-primary"
-                  } ring-4 ring-background animate-pulse`}
+                  } ring-4 ring-background ${i === 0 ? "animate-pulse" : ""}`}
                 />
-
                 <div className="flex flex-col sm:flex-row sm:flex-wrap sm:items-baseline gap-2 sm:gap-3">
                   <span className="text-[9px] sm:text-[11px] tracking-[0.15em] sm:tracking-[0.3em] text-muted-foreground">
                     [{l.time}]
                   </span>
-
                   <span className="text-primary text-lg sm:text-base md:text-lg font-display tracking-wide">
                     {l.org}
                   </span>
-
                   <span className="text-foreground/60 text-xs sm:text-sm">
                     › {l.role}
                   </span>
                 </div>
-
                 {l.location && (
                   <div className="mt-2 text-[9px] sm:text-[11px] tracking-[0.1em] sm:tracking-[0.2em] text-cyan-400/70 uppercase leading-relaxed">
                     {l.location}
                   </div>
                 )}
-
                 {l.description && (
                   <p className="mt-4 text-sm sm:text-[13px] md:text-sm leading-relaxed text-foreground/70 max-w-full lg:max-w-4xl">
                     {l.description}
                   </p>
                 )}
-
                 <ul className="mt-4 space-y-2 text-sm sm:text-[13px] text-foreground/75">
                   {l.notes.map((n) => (
-                    <li
-                      key={n}
-                      className="flex gap-2 items-start"
-                    >
-                      <span className="text-primary shrink-0 mt-0.5">
-                        ›
-                      </span>
-
-                      <span className="leading-relaxed">
-                        {n}
-                      </span>
+                    <li key={n} className="flex gap-2 items-start">
+                      <span className="text-primary shrink-0 mt-0.5">›</span>
+                      <span className="leading-relaxed">{n}</span>
                     </li>
                   ))}
                 </ul>
-
                 {l.technologies && (
                   <div className="mt-6">
                     <div className="text-[9px] sm:text-[11px] uppercase tracking-[0.15em] sm:tracking-[0.25em] text-primary/70 mb-3">
                       Technologies Used
                     </div>
-
                     <div className="flex flex-wrap gap-2">
                       {l.technologies.map((tech) => (
                         <span
@@ -243,13 +245,11 @@ export function Experience() {
                     </div>
                   </div>
                 )}
-
                 {l.skillsGained && (
                   <div className="mt-6">
                     <div className="text-[9px] sm:text-[11px] uppercase tracking-[0.15em] sm:tracking-[0.25em] text-cyan-400/70 mb-3">
                       Skills Gained
                     </div>
-
                     <div className="flex flex-wrap gap-2">
                       {l.skillsGained.map((skill) => (
                         <span
@@ -265,7 +265,6 @@ export function Experience() {
               </motion.li>
             ))}
           </ol>
-
           <div className="mt-8 text-primary/80 text-[10px] sm:text-[12px] cursor-blink break-words">
             awaiting next mission
           </div>
